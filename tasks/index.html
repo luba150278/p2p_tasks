@@ -3,376 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Решение задач JS</title>
     <script  src="https://code.jquery.com/jquery-3.4.1.js" integrity="
 	sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://zero.p2p.shpp.me/console.js"></script>
+    <title>Document</title>
 </head>
 <body>
-    <script src="https://zero.p2p.shpp.me/console.js"></script>
-<!----------------------------------------------------------------------------->
-<h1>Задача. Привіт світ!</h1>
-    <h2>Первое задание:Вивести на екран слова "hello world"</h2>
-        <p id='p1'>Результат:</p>
-        <script>      
-            create_str('Hello',p1);
-            create_str('World!',p1);  
-            function create_str(str,id){
-                let h3 = document.createElement('h3');
-                h3.innerHTML=str;               
-                id.append(h3);        
-               
-            };
-        </script>
-    <hr>
-    
-    <!----------------------------------------------------------------------------->
-    <h2>Второе задание:вивести на экран суму чисел 12892323+454665768</h2>
-    <p id="p2">Результат:</p>
-            <script>      
-                var first_numb=12892323;
-                var second_numb=454665768;
-                var sum=first_numb+second_numb;
-                create_str(sum,p2);//таже функция используется, что и в первом задании 
-            </script>
-    <hr><hr>
-<!----------------------------------------------------------------------------->
-<h1>Задача. Поменяти міцями дві змінних</h1>    
     <script>
-        function changePlace() {
-            var a=+prompt('Введите первую переменную');
-            var b=+prompt('Введите вторую переменную');
-
-            a = a + b; 
-            b = a - b; 
-            a = a - b;
-            create_str('Теперь в первой переменной имеем значение: '+a,p3);
-            create_str('А во втрой переменной имеем значение: '+b,p3);
-        }
-    </script>
-
-    <input type="button" onclick="changePlace()" value="Ввести переменные">
-    <p id="p3">Результат:</p>
-
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача. Дізнатися номер.</h1>
-    <script>
-        function findNum() {
-            var a=+prompt('Привет! Введи число')+1;          
-            create_str('Круто. Теперь я добавлю единичку и получится число: '+a,p4);                   
-        }
-    </script>
-
-    <input type="button" onclick="findNum()" value="Узнать номер">
-    <p id="p4">Результат:</p>
-
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Сума двох чисел.</h1>
-    <script>
-    function findSum() {
-        var a=+prompt('Введите первую переменную');
-        var b=+prompt('Введите вторую переменную');         
-        create_str('Круто. Я сложила числа и у меня получилось: '+(a+b),p5);                   
-    }
-    </script>
-
-    <input type="button" onclick="findSum()" value="Сложить два числа">
-    <p id="p5">Результат:</p>
-
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача. Км на день.</h1>
-    <script>
-    function kmDay() {
-        var a=+prompt('Эй, сколько км в день ты проходишь?');
-        var str;
-        if(a<=3){str='Маловато будет...'}
-        else{str='Молодец!'}
-        create_str(str,p6);                   
-    }
-    </script>
-
-    <input type="button" onclick="kmDay()" value="Узнать норму">
-    <p id="p6">Результат:</p>
-
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача. Км на день2.</h1>
-    <script>
-    function kmDay() {
-        var a=+prompt('Эй, сколько км в день ты проходишь?');
-        var str;
-        if(a<=3){str='Маловато будет...'}
-        else if(a>3 && a<20){str='Молодец!'}
-        else if(a>20){str='Марафонец!'}
-        create_str(str,p7);                   
-    }
-    </script>
-
-    <input type="button" onclick="kmDay()" value="Узнать норму">
-    <p id="p7">Результат:</p>
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача про ліфт.</h1>
-    <script>
-    function kmDay2() {
-        var a=+prompt('Какой этаж вам нужен?');
-        var str;
-        if(a<1||a>9){str='Неверная цифра';return false;}
-        if(a<=3 || a>=7){str='ОК'}
-        else{
-            var parol=prompt("Введите пароль");
-            if(parol==1337){str="OK"}
-            else{str="Неверный пароль"}
-        }
-        create_str(str,p8);                   
-    }
-    </script>
-
-    <input type="button" onclick="kmDay2()" value="Какой этаж">
-    <p id="p8">Результат:</p>
-
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача про setAlarm.</h1>
-
-    <form>
-        <div class="ques">
-            <h2>Вы сейчас в работаете?</h2>
-            <input type="checkbox" class="cbx" id="work_quest">
-        </div>
-        <div class="ques">
-            <h2>Вы сейчас в отпуске?</h2>
-            <input type="checkbox" class="cbx" id="vac_quest">
-        </div>
-    </form>
-
-    <script>
-        function quest() {
-            var employed=false;
-            var vacation=false;
-            var str="";
-
-            if($('#work_quest').is(":checked")){employed=true;}
-            if($('#vac_quest').is(":checked")){vacation=true;}
-
-            var prov=setAlarm(employed,vacation);
-            if(prov==true){str="Будильник звенит"}
-            else{str="Будильник отключен"}
-
-            create_str(str,p9);                   
-        }
-
-        function setAlarm(employed,vacation){
-                if(employed==true && vacation==false){return true;}
-                else{return false;}
-        }
-    </script>
-
-    <input type="button" onclick="quest()" value="Прверить будильник">
-    <p id="p9">Результат:</p>
-
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача про Скільки мені буде років в 2099 році?.</h1>
-
-    <form>
-        <div class="ques">
-            <h2>Ваш год рождения:</h2>
-            <input type="text" class="year" id="year_born">
-        </div>
-        <div class="ques">
-            <h2>Искомый год:</h2>
-            <input type="text" class="year" id="year_search">
-        </div>
-    </form>
-
-    <script>
-        function yearsOld() {
-            var year_born=parseInt($('#year_born').val());
-            var year_search=parseInt($('#year_search').val());
-
-            var str="";
-            var add_y="";
-            var res=year_search-year_born;
-            var past_res=Math.abs(res);
-            //----смотрим год или годы----
-            if(past_res!=1){add_y="years"}
-            else{add_y="year"}
-
-            //----результат----
-            if(res<0){str='You will be born in '+ past_res + ' '+add_y+'.';}//прошлое
-            if(res>0){str='You are '+ past_res  + ' '+add_y + ' old.';}//будущие
-            if(res==0){str='You were born this very year!';}//текущий год
-
-            create_str(str,p10);                   
-        }        
-    </script>
-
-    <input type="button" onclick="yearsOld()" value="Узнать">
-    <p id="p10">Результат:</p>
-
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача про Парне/Непарне.</h1>
-
-    <form>
-        <div class="ques">
-            <h2>Введите целое число:</h2>
-            <input type="text" class="year" id="prov_odd">
-        </div>       
-    </form>
-
-    <script>
-        function provOdd() {
-            var num=parseInt($('#prov_odd').val());  
-            var str="";
-            if(num%2==0){str="Even"}
-            else{str="Odd"}        
-            create_str(str,p11);                   
-        }        
-    </script>
-
-    <input type="button" onclick="provOdd()" value="Проверить четность числа">
-    <p id="p11">Результат:</p>
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача про переведення boolean значень в рядки yes або no.</h1>
-  
-<script>
-    function conv(){
-        //----для формирования true/false возьму значения из checkbox в задании про alarm          
-        var str="";   
-        str=convert_bool_in_text($('#work_quest').is(":checked"));
-        create_str(str,p12);
-
-    }
-
-    function convert_bool_in_text(x) {
-                 if (x==true){return 'YES'} 
-                 else{return 'NO'}   
-    }    
-</script>
-
-<input type="button" onclick="conv()" value="Преобразовать">
-<p id="p12">Результат:</p>
-
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задача. Зірочки.</h1>
-<form>
-    <div class="ques">
-        <h2>Выделить checkbox - использовать 'for', не выделять - 'while' </h2>
-        <input type="checkbox" class="cbx" id="for_or_while">
-    </div>
-   
-</form>
-<script>
-    function zir(){
-
-        var str="Выведем 10 звездочек"+'<br>';
-        var spos=true;
-        if($('#for_or_while').is(":checked")) {spos=false;}
-              
-       
-        str=str+zir_on(10,spos)+'<br>';      
         
-        str=str+"Теперь выведем 100 звездочек"+'<br>';
-        str=str+zir_on(100,spos)+'<br>';
+        console.log('Hello'+'\n'+'World!')//task 1
+        console.log(12892323+454665768)//task#2
 
-        str=str+"А теперь выведем 10000 звездочек"+'<br>';
-        str=str+zir_on(10000,spos)+'<br>';
+        //-----task#3 Задача. Поменяти міцями дві змінних------
+        let a=+prompt('Введите первую переменную')
+        let b=+prompt('Введите вторую переменную')
+        a = a^b
+        b = a^b
+        a = a^b
+        console.log(`a = ${a} \nb = ${b}`)
 
-        var how_match=+prompt("Сколько Вам звездочек вывести?");
-        str=str+"Пользователь хочет "+ how_match+' звездочек. Выводим и их'+'<br>';
-        str=str+zir_on(how_match,spos)+'<br>';
+        //-----task#4 Задача. Дізнатися номер и додати 1------
+        let X = parseInt(prompt("Hey, put please a any number!"))
+        console.log(`X = ${X} \nX + 1 = ${X += 1}`)
 
-        create_str(str,p13);
-
-        }
-        
+      //---------task#5----Сума двох чисел---------------
+        let firstNumber = parseInt(prompt("Hey, put please a first number!"))
+        let secondNumber = parseInt(prompt("Hey, put please a second number!"))
+        console.log(`Result of summ = ${firstNumber + secondNumber}`)
        
-        function zir_on(count, spos)
-        { 
-            str="";
-            var i=1;
-            if (spos==true){
-                while(i<=count){
-                    str=str+'*';
-                    if(i%100==0){str=str+'<br>';}
-                    i++;
-                }
-            }
-            else
+        function takeNumberFromConsole(a) 
+        {
+            return parseInt(prompt(`Hey pal, print please a ${a} number`))
+        }
+        console.log(`Result of two numbers is ${takeNumberFromConsole("first") + takeNumberFromConsole("second")}`)
+
+        //----------task#6----КМ день---
+        function kmInADay() {
+            const kmLimit = 3
+            const kmFromConsole = +prompt('Hey, how many km did you go?')
+
+            return kmFromConsole <= kmLimit ? 'Маловато будет...' : 'Молодец!'
+        }
+        console.log(kmInADay())
+
+        //-------task#7----- Км на день2------
+        function kmInADay2() {
+            const kmLimit1 = 3
+            const kmLimit2 = 20
+            const kmFromConsole = +prompt('Hey, how many km did you go?')
+
+            return kmFromConsole <= kmLimit1 ? 'Маловато будет...' : kmFromConsole >= kmLimit2 ? 'Марафонец!' : 'Молодец!'
+        }
+        console.log(kmInADay2())
+
+        //-------task#8----- Лифт------
+        lift ( +prompt('Какой этаж вам нужен?') ) 
+        function lift(a)
+        {
+            if (a < 1 || a > 9) 
             {
-                for(i=1;i<=count;i++){str=str+'*'; if(i%100==0){str=str+'<br>';}}
+                console.log( 'Не верная цифра' ) 
+                return false
+            } 
+            else if (a <= 3 || a >= 7) { console.log('OK') }
+            else
+            { 
+                parol = prompt("Введите пароль")
+                parol == 1337 ? console.log('OK') : console.log('Неверный пароль')              
+            }
+        }
+
+         //-------task#9----- Будильник------
+         setAlarm(prompt('Вы сейчас в работаете (Да/Нет)?'), prompt('Вы сейчас в отпуске (Да/Нет)?'))
+
+         function setAlarm(work, vac){            
+            (work == 'Да' && vac == 'Нет') ? console.log('Будильник включен') : console.log('Будильник отключен')           
+
+         }
+
+         //-------task#10----- Скільки мені буде років в 2099 році?------
+         getYears(+prompt('Ваш год рождения:'), +prompt('Искомый год:'))
+
+         function getYears(yearBorn, yearSearch){
+
+            let res = yearSearch-yearBorn
+            let pastRes = Math.abs(res)
+            let add_y
+            pastRes != 1 ? (pastRes > 4 ? add_y = ' лет' : add_y = ' года') : add_y = ' год'
+
+           //----результат----
+           let str = pastRes + add_y
+            if (res < 0) { console.log('Вы родитесь через '+ str) }//прошлое
+            if (res > 0) { console.log('Вам '+ str) }//будущие
+            if (res == 0) { console.log('Это ваш год рождения!')}//текущий год   
+         }
+
+
+         //-------task#11----- Задача про Парне/Непарне------
+         console.log( checkOdd(+prompt('Введите целое число')) )
+         
+         function checkOdd(x){
+             let str
+            x % 2 == 0 ? str = 'Четное' : str = 'Нечетное'
+
+            return str
+
+         }
+
+
+         //-------task#12----- Задача про переведення boolean значень в рядки yes або no------
+         function boolToWord( bool ){ 
+                let answ
+                bool == true ? answ = 'Yes' : answ = 'No'
+                return answ
+        }
+
+        //-------task#13----- Задача. Зірочки.------
+            //true - выводим через while, false -> for
+            //если звездочек больше 100 выводим по 100 в ряду, для удобства
+            
+            console.log( zir_on(10, true) )          
+            console.log( zir_on(100, true) )
+           
+            console.log( zir_on(10000, true) )
+            console.log( zir_on(10000, false) )
+
+            console.log( zir_on(+prompt('Сколько зведочек вывести?'), true) )
+           
+
+            function zir_on(count, spos)
+        { 
+            str=''
+            let i=1
+            if (spos == true){
+
+                while(i <= count){
+                    str=str + '*'
+                    if (i%100 == 0) str = str + '\n'
+                    i++
+                }
+            }else{
+
+                for(i = 1; i <= count; i++){
+                    str = str + '*' 
+                    if (i % 100 == 0) str = str + '\n'                    
+                }
 
             }
-            return str;
+            return str
         }
-        
-    
 
-   
-</script>
+        //-------task#14----- Задачі про числа------
+        listNumbs( +prompt('Введите положительное число') )
 
-<input type="button" onclick="zir()" value="Выводим звездочки">
-<p id="p13">Результат:</p>
+        function listNumbs(N){
+            let str = ''
+            //----for-----
+            for(let i = 1; i <= N; i++){
+                str = str + i
+                if (i<N) str = str + ', '
+            }
+            console.log ('Вывод через for:\n' + str)
 
-<!----------------------------------------------------------------------------->
-<hr>
-<h1>Задачі про числа</h1>
+            //----while-----
+            let i=1
+            str = ''
+            while(i <= N){
+                str = str + i
+                if (i < N) str = str + ', '
+                i++
+            }
+            console.log ('Вывод через while:\n' + str)
 
-<script>
-    function numbs(){
 
-        var str="1. вивести на екран числа від 1 до N (де N - це число, яке введе користувач)"+'<br>';
-        var N=+prompt("Введите положительное число");
-        var str_numbs="";
-        for(var i=1;i<=N;i++){
-            str_numbs=str_numbs+i;
-            if(i<N){str_numbs=str_numbs+", ";}
+            //------DECS---
+            str = ''
+            for(let i = N; i >= 1; i--){
+                str = str + i
+                if (i > 1) str = str + ', '
+            }
+            console.log ('Вывод в обратном порядке:\n' + str)
+
+
+            //----Even only---
+            str = ''
+            for(let i = 2; i <= N; i += 2){
+                str = str + i
+                if (i + 1 < N) str = str + ', '
+            }
+            console.log ('Только четные:\n' + str)
+
         }
-         str=str+str_numbs;
-        //---используем while
-        str=str+'<br>'+'<br>'+'2. Тоже самое, но с циклом while'+'<br>';   
+
+
+        //-------task#15----- Квадратик із зірочок------
+        square( +prompt('Сколько звездочек должно находиться на стороне квадрата?') )
+
+        function square(N){        
        
-        str_numbs="";
-        i=1;
-        while(i<=N){
-            str_numbs=str_numbs+i;
-            if(i<N){str_numbs=str_numbs+", ";}
-            i++;
-        }
-         str=str+str_numbs;
+            let cnt = N * N
+            let str=''
+            for(let i=1; i <= cnt; i++)
+            { 
+                str=str+'*'
+                if(i % N == 0){str = str + '\n'}
+            }
+            console.log('Цикл for:\n' + str)
 
-         str=str+'<br>'+'<br>'+'3. Числа в обратном порядке'+'<br>'; 
-         var str_numbs="";
-        for(var i=N;i>=1;i--){
-            str_numbs=str_numbs+i;
-            if(i>1){str_numbs=str_numbs+", ";}
-        }
-         str=str+str_numbs;
-         
-         str=str+'<br>'+'<br>'+'4. Только четные числа'+'<br>'; 
-         var str_numbs="";
-         for(var i=2;i<=N;i=i+2){
-            str_numbs=str_numbs+i;
-            if(i+1<N){str_numbs=str_numbs+", ";}
-        }
-         str=str+str_numbs;
+            i = 1
+            str = ''
+            while(i <= cnt)
+            {
+                str = str + '*'
+                if(i % N == 0){str = str +'\n'}
+                i++
+            }
+            console.log('Цикл while:\n' + str)
+        }     
+ 
+    //-------task#16----- Трикутники із зірочок------ 
+        triA( +prompt("Сколько звездочек должно находиться на катетах?") )
 
-        create_str(str,p14);
-    }    
+        function triA(N){
+            let str=''                
+            let prov=true
+            let i
+            let K=1
+
+            //--first
+            while(prov)
+            {  
+                for (i = 1; i <= K; i++) {str=str+'*'}
+                str = str +'\n'           
+                if (K == N) {prov = false}
+                K++    
+            }
+            console.log(str)
+
+            //--second----
+            prov = true
+            K = N
+            str = ''
+            while(prov)
+            {
+                for (i = 1; i <= K; i++) {str = str + '*'}
+                str = str +'\n'
+                K--
+                if (K == 0) {prov = false}        
+            }
+            console.log(str)
+
+            //---third
+            prov = true
+            K = N
+            str = ''
+            while (prov)
+            {
+                for (i = 1; i <= N; i++)
+                {
+                    if (K == N) {str = str + '*'
+                    }else{
+                        let res=N-K;                        
+                        i <= res ? str = str + ' ' : str = str + '*'
+                    }
+                }
+                
+                str = str + '\n'
+                K--
+                if (K == 0) {prov=false}        
+            }
+            console.log(str)
+        }  
+
+
+    //-------task#17----- Вивести ялинку на екран------ 
+        tree( +prompt('Сколько звездочек должно в широкой части елочки (число не менее 5) ?') )
+        function tree(N){
+            let str=''            
+            let prov=true
+            let k = 1 //количество звездочек ствола 1 - для нечетных 2 для четных, столько же оставим на вершине - для симметрии
+            let nr = 0 //кол-во рядов между стволом и верхушкой
+            let N_start = N //промежуточная                
+            
+            if ( N % 2 == 0){k = 2}
+            if (N >= 5){
+                while(prov)
+                {
+                    if(N_start>2){
+                        nr++
+                        N_start -= 2
+                    }else{prov = false}
+                } 
+            }
+            
+            //----первый и последний ряд см.сверху----
+            let res = (N - k) / 2
+            let str1 = ''
+            let str2=' '
+
+            for(let i = 1; i <= N; i++)            
+            {
+                (i <= res || i > (res + k)) ? str1=str1+str2 : str1=str1+'*'                                   
+            }
+            str = str + str1 + '\n'
+            
+            //----следующие ряды до ствола----                
+            let kk=k//кол-во 
+            let str3
+            for(let j = 1; j <= nr; j++)
+            {              
+                kk += 2
+                res = (N - kk) / 2
+                for(let i=1; i<=N;i++)
+                {                  
+                    (i<=res || i>(res+kk) )? str=str+str2 : str=str+'*'                    
+                }
+                str=str+'\n'
+             }
+
+            str = str + str1 + '\n' //ствол
+                    
+            console.log(str)
+        } 
+
+     //-------task#18----- Задача про найбільше число.------ 
+        max_num()
+        function max_num(){
+            let str = ''
+            let prov=true
+            let num = +prompt('Введите 1-е число')
+            let num_even
+            let i = 2
+
+            while(prov){
+                let x = +prompt("Введите " + i + '-е число. Для прекращения ввода введите <0>')
+                if (x == 0) prov = false
+                if (x > num) num = x
+                if ((x > num_even && x % 2 == 0)||(num_even == undefined && x % 2 == 0)) num_even = x
+                i++
+            }
+        
+            str='Максимальное число в последовательности: '+ num+'\n'       
+            if (!!num_even){str = str + "Среди четных чисел наибольшее число: "+ num_even
+            }else{str = str + 'Четных чисел, кроме 0 не вводилось'}
+            
+            console.log(str)
+        }    
+ 
+    //-------task#19----- Сума послідовностей чисел------ 
+        sum_num(+prompt('Введите 1-е число'), +prompt('Введите 2-е число'))
+        function sum_num(num1, num2){
+            
+            let sum=0    
+            if (num1 < num2) for(let i = num1; i <= num2; i++){sum = sum + i}
+            if (num1 > num2) for(let i = num1; i >= num2; i--){sum = sum + i}
+            if (num1 == num2) sum = num1
+            console.log(sum)
+        }    
+
+    //-------task#20----- Задача про міста ------
+        city()
+        function city(){
+            let str=''
+            let arr=[]
+            let num1
+            let prov=false
+            let N = 9
+            for(let i = 0; i < N; i++){ num1=prompt('Введите '+ (i+1)+'-й город'); arr[i] = num1}
+            let num2=prompt('Введите ваш родной город')
+        
+            let i=0
+            while(prov == false && i < N)
+            {            
+                if (arr[i] == num2){
+                    str = "я знаю твоє місто!"
+                    prov=true
+                } else {str="я НЕ знаю твоє місто!"}
+                i++
+            }
+
+           console.log(str)
+        }   
+
+     //-------task#21----- Задача про банкомат ------ 
+        bankomat()
+        function bankomat(){
+            let numKart
+            let putMoney
+            let prov = true
+            let arr = []
+            let str = ''
+            let sum=0
+
+
+            for (let i=0; i<=9; i++){ arr[i] = 0}
+            while (prov == true){
+                numKart = +prompt('vvedite nomer kartochki')
+                if (numKart >= 1 && numKart <= 10){
+                    prov = false
+                }else{ alert('Значение долно быть от 1 до 10')}
+            }
+
+            prov = true
+            while (prov == true){
+                putMoney = +prompt('skolko polozhit?')
+                if (putMoney >= -1000 && putMoney <= 1000) {
+                    prov = false
+                    arr[numKart] = putMoney
+                
+                }else{ alert('Значение долно быть от -1000 до 1000')}
+
+            }
+
+            for (let i=0; i<=9; i++){ 
+                str= str + arr[i] + ' '
+                sum=sum + arr[i]
+            }
+
+            console.log(str + '\n' + 'v summe na vseh kartah: ' + sum)
+
+        }
+
+    //-------task#22----- Задача про відцетровану штуку ------ 
+        cntrShuk()
+        function cntrShuk(){
+            let arr = []
+            let i=0
+            let str=''
+            let num
+            let max
+            let empt
+            prov = true
+
+            while(i <= 19 && prov == true){
+              num=+prompt('Введите ' + (i + 1) + '-е число' )  
+              num == 0 ? prov = false : arr[i] = num
+              i++
+            }
+            max = getMaxOfArray(arr)
+            
+            for( let i = 0; i < arr.length; i++){ 
+                str = str + makeStr( (max - arr[i])/2 , arr[i] )+'\n'           
+            }
+            
+            console.log(str)
+        }
+
+        function getMaxOfArray(numArray) {
+            return Math.max.apply(null, numArray);
+        }
+
+        function makeStr( empt, notEmpt){
+            let str=''
+            for( let i=1; i<= empt + notEmpt; i++){
+                i <= empt ? str = str + ' ' : str = str + '*'
+            }
+            return str
+        }
+
+    //-------task#23----- Задача про обчислення найбільшого числа за допомогою функції
+
+        function max(x,y) {
+            // тут треба щось дописати...
+            let maxNum
+            x > y ? maxNum = x : maxNum = y
+            return maxNum
+        }
+
+        let a = +prompt("введи перше число")
+        let b = +prompt("введи друге число")
+
+        console.log(max(a,b))
+
+    //-------task#24----- Масив у зворотньому порядку
+        main()
+        function main() {
+            let N = +prompt('Введите размер массива')
+            let arr = []
+            str=''
+
+            for( let i  =0; i< N; i++){
+                arr[i] = prompt('Введите ' + (i + 1) + '-ый элемент массива')
+            }
+            
+            for( let i=0; i< N; i++){
+                i < (N-1) ? str = str + arr[i] + ', ' : str = str + arr[i]
+            }
+            console.log(str);
+
+            str=''
+            for( let i = N-1; i >= 0 ; i--){
+                i > 0 ? str = str + arr[i] + ', ' : str = str + arr[i]
+            }
+            console.log('ось реверснутий масив:\n' + str)
+        }
    
-</script>
 
-<input type="button" onclick="numbs()" value="Выводим числа">
-<p id="p14">Результат:</p>
-   
+    </script>
 </body>
-
-
-<link rel="stylesheet" href="assets/css/style.css">
 </html>
